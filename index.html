@@ -17,21 +17,52 @@
       <div id="jet"></div>
 
     </div>
-    <div class="modal" tabindex="-1" role="dialog" id="questionModal">
-      <div class="modal-dialog" role="document">
+    <div class="modal" tabindex="-1" role="dialog" id="questionModal"  style="overflow-y: auto;height: 100%;padding-left: 0px;" data-backdrop="static"> 
+
+      <div id="mcq"></div>
+
+
+      <div class="modal-dialog modal-dialog-centered custom-modal-dialog" role="document" style="overflow-y: hidden;">
           <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Question</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="resumeGame()">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
+              <div class="modal-header" style="width: 100%;">
+                 
+
+                  <!-- <div class="timerContainer" >
+                      <img id="timer-icon" src="assets/images/timer.png" alt="Timer Icon">
+                      <div id="timer">
+                    
+                      </div>
+                  </div> -->
+                  
               </div>
               <div class="modal-body">
+                  <div id='contentDiv'></div>
+
                   <p id="questionText"></p>
+                  <!-- <p id="question-options"></p> -->
               </div>
+
+              <div class="radio-container">
+                  <label>
+                    <input type="radio" name="group" value="1" required>  
+                  </label>
+                  <label>
+                    <input type="radio" name="group" value="2" required>  
+                  </label>
+                  <label>
+                    <input type="radio" name="group" value="3" required>  
+                  </label>
+                  <label>
+                    <input type="radio" name="group" value="4" required>
+                  </label>
+              </div>
+              <div id="error-text"></div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal"   onclick="resumeGame()">Close</button>
+                  <button type="button" id="continueButton" class="btn btn-secondary" >Submit</button>
               </div>
+
+              
+
           </div>
       </div>
   </div>
