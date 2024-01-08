@@ -605,6 +605,7 @@ const QuestionList=
 
 ]
 
+let isGamePaused = false;
 
 // let currentQuestionIndex = 0;
 
@@ -724,7 +725,6 @@ function displayQuestionInModal(question) {
 
 
 
-let isGamePaused = false;
 
 function pauseGame() {
   isGamePaused = true;
@@ -910,22 +910,118 @@ function moveRocks() {
 // ... (Your existing code)
 
 // Touch events for left and right movement
-var touchStartX = 0;
+// var touchStartX = 0;
 
-window.addEventListener("touchstart", (e) => {
-  touchStartX = e.touches[0].clientX;
-});
+// window.addEventListener("touchstart", (e) => {
+//   touchStartX = e.touches[0].clientX;
+// });
 
-window.addEventListener("touchend", (e) => {
-  var touchEndX = e.changedTouches[0].clientX;
-  var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+// window.addEventListener("touchend", (e) => {
+//   var touchEndX = e.changedTouches[0].clientX;
+//   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
 
-  if (touchEndX < touchStartX && left > 0) {
-    jet.style.left = left - 10 + "px"; // Move left
-  } else if (touchEndX > touchStartX && left <= 1500) {
-    jet.style.left = left + 10 + "px"; // Move right
-  }
-});
+//   if (touchEndX < touchStartX && left > 0) {
+//     jet.style.left = left - 10 + "px"; // Move left
+//   } else if (touchEndX > touchStartX && left <= 1500) {
+//     jet.style.left = left + 10 + "px"; // Move right
+//   }
+// });
+
+// // Touch event for shooting bullets when the jet is touched
+// jet.addEventListener("touchstart", (e) => {
+//   e.preventDefault(); // Prevent default behavior like scrolling
+//   shootBullet();
+// });
+
+// function shootBullet() {
+//   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+//   var bullet = document.createElement("div");
+//   bullet.classList.add("bullets");
+//   board.appendChild(bullet);
+
+//   var moveBullet = setInterval(() => {
+//     // ... (Your existing bullet movement code)
+
+//     var bulletBottom = parseInt(
+//       window.getComputedStyle(bullet).getPropertyValue("bottom")
+//     );
+
+//     if (bulletBottom >= 1000) {
+//       clearInterval(moveBullet);
+//     }
+
+//     bullet.style.left = left + "px";
+//     bullet.style.bottom = bulletBottom + 3 + "px";
+//   });
+// }
+
+// // ... (Your existing code)
+
+
+
+
+
+
+
+// var touchStartX = 0;
+
+// window.addEventListener("touchstart", (e) => {
+//   touchStartX = e.touches[0].clientX;
+// });
+
+// window.addEventListener("touchend", (e) => {
+//   var touchEndX = e.changedTouches[0].clientX;
+//   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+
+//   if (touchEndX < touchStartX && left > 0) {
+//     moveLeft();
+//   } else if (touchEndX > touchStartX && left <= 1500) {
+//     moveRight();
+//   }
+// });
+
+// // Touch event for shooting bullets when the jet is touched
+// jet.addEventListener("touchstart", (e) => {
+//   e.preventDefault(); // Prevent default behavior like scrolling
+//   shootBullet();
+// });
+
+// // Touch event for moving left
+// function moveLeft() {
+//   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+//   jet.style.left = left - 10 + "px"; // Move left
+// }
+
+// // Touch event for moving right
+// function moveRight() {
+//   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+//   jet.style.left = left + 10 + "px"; // Move right
+// }
+
+// // ... (Your existing code)
+
+// var touchStartX = 0;
+
+// window.addEventListener("touchstart", (e) => {
+//   touchStartX = e.touches[0].clientX;
+// });
+
+// window.addEventListener("touchend", (e) => {
+//   var touchEndX = e.changedTouches[0].clientX;
+//   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+
+//   if (touchEndX < touchStartX && left > 0) {
+//     moveLeft();
+//   } else if (touchEndX > touchStartX && left <= 1500) {
+//     moveRight();
+//   }
+// });
+
+
+
+
+
+
 
 // Touch event for shooting bullets when the jet is touched
 jet.addEventListener("touchstart", (e) => {
@@ -933,6 +1029,19 @@ jet.addEventListener("touchstart", (e) => {
   shootBullet();
 });
 
+// Touch event for moving left
+function moveLeft() {
+  var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+  jet.style.left = left - 10 + "px"; // Move left
+}
+
+// Touch event for moving right
+function moveRight() {
+  var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
+  jet.style.left = left + 10 + "px"; // Move right
+}
+
+// Touch event for shooting bullets
 function shootBullet() {
   var left = parseInt(window.getComputedStyle(jet).getPropertyValue("left"));
   var bullet = document.createElement("div");
@@ -948,6 +1057,7 @@ function shootBullet() {
 
     if (bulletBottom >= 1000) {
       clearInterval(moveBullet);
+      displayQuestion()
     }
 
     bullet.style.left = left + "px";
@@ -956,10 +1066,3 @@ function shootBullet() {
 }
 
 // ... (Your existing code)
-
-
-
-
-
-
-
